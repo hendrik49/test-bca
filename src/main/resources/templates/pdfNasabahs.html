@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nasabahs</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+
+<img src="images/logo.jpg" class="logo" />
+
+<h1>List of nasabahs </h1>
+
+<!-- Nasabahs Table -->
+<div id="nasabahs">
+    <div th:if="${not #lists.isEmpty(nasabahs)}">
+        <table class="nasabahs_table paginate-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="nasabah : ${nasabahs}">
+                <td th:text="${nasabah.name}"></td>
+                <td th:text="${nasabah.email}"></td>
+                <td th:text="${nasabah.address}"></td>
+                <td th:text="${nasabah.phone}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<span th:text="'Count:' + ${#lists.size(nasabahs)}"></span>
+
+</body>
+</html>
