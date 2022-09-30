@@ -19,11 +19,11 @@ public class Nasabah {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "field can't be empty")
+    @NotEmpty(message = "name field can't be empty")
     @Size(min = 4, max = 30, message = "{Size.Nasabah.name}")
     private String name;
 
-    @NotEmpty(message = "field can't be empty")
+    @NotEmpty(message = "noRekening field can't be empty")
     private String noRekening;
     private float saldo;
     private boolean status;

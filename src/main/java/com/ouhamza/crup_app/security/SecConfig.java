@@ -47,7 +47,7 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
                 "/oauth/**",
                 "/css**/**",
                 "/resources**/**").permitAll();
-        http.authorizeRequests().antMatchers("/new**/**","/edit**/**","/delete**/**").hasAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/new**/**","/edit**/**","/delete**/**");
         http.authorizeRequests().anyRequest().authenticated();
 
         http.oauth2Login()
