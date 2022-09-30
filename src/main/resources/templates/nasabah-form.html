@@ -33,12 +33,12 @@
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter name" />
+                    <input type="text" th:field="*{name}" class="form-control" name="name" id="name" placeholder="Enter name" />
                     <div class="alert alert-danger mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                 </div>
                   <div class="form-group">
                     <label for="noRekening">No Rekening</label>
-                    <input type="noRekening" th:field="*{noRekening}" class="form-control" id="noRekening"  placeholder="Enter No rekening" />
+                    <input type="noRekening" th:field="*{noRekening}" class="form-control" id="noRekening" name="noRekening" placeholder="Enter No rekening" />
                       <div class="alert alert-danger mt-1" th:if="${#fields.hasErrors('noRekening')}" th:errors="*{noRekening}"></div>
                   </div>
                   <div class="form-group">
