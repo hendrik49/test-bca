@@ -18,13 +18,13 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Tambah <b>transaksi:</b></h2>
+                        <h2>Informasi <b>Nasabah:</b></h2>
                     </div>
                 </div>
             </div>
 
 
-            <form action="#" th:action="@{/save}"  th:object="${transaksi}" method="post" >
+            <form action="#" th:action="@{/save}"  th:object="${nasabah}" method="post" >
 
 
                 <div class="form-group">
@@ -33,57 +33,25 @@
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" th:field="*{name}" class="form-control" name="name" id="name" placeholder="Enter name" />
+                    <input type="text" th:field="*{name}" class="form-control" name="name" id="name" placeholder="Enter name" readonly/>
                     <div class="alert alert-danger mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                 </div>
                   <div class="form-group">
                     <label for="noRekening">No Rekening</label>
-                    <input type="noRekening" th:field="*{noRekening}" class="form-control" id="noRekening" name="noRekening" placeholder="Enter No rekening" />
+                    <input type="noRekening" th:field="*{noRekening}" class="form-control" id="noRekening" name="noRekening" placeholder="Enter No rekening" readonly/>
                       <div class="alert alert-danger mt-1" th:if="${#fields.hasErrors('noRekening')}" th:errors="*{noRekening}"></div>
                   </div>
                   <div class="form-group">
                     <label for="saldo">Saldo</label>
-                    <input type="text" th:field="*{saldo}" class="form-control" id="saldo"  placeholder="Enter Saldo" />
+                    <input type="text" th:field="*{saldo}" class="form-control" id="saldo"  placeholder="Enter Saldo" readonly/>
                 </div>
                   <div class="form-group">
                     <label for="phone">Status</label>
                     <input type="checkbox" th:field="*{status}" class="form-control" id="status" />
                 </div>
 
-
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>
-                    <span class="custom-checkbox">
-                        <input type="checkbox" id="selectAll">
-                        <label for="selectAll"></label>
-                    </span>
-                    </th>
-                    <th>Nama</th>
-                    <th>No Rekening</th>
-                    <th>Saldo</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="transaksi: ${transaksis}">
-                    <td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-                    </td>
-                    <td th:text="${transaksi.name}"></td>
-                    <td th:text="${transaksi.noRekening}"></td>
-                    <td th:text="${transaksi.saldo}"></td>
-                    <td th:text="${transaksi.status? 'Aktif':'Non Aktif'}"></td>
-                </tr>
-                </tbody>
-            </table>
 
 
 

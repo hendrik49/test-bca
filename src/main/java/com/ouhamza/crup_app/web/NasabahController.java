@@ -79,6 +79,14 @@ public class NasabahController {
         return "nasabah-form";
     }
 
+    @RequestMapping("/show/{id}")
+    public String show(@PathVariable("id") long id, Model model){
+        Nasabah nasabah = nasabahService.get(id);
+        model.addAttribute("nasabah", nasabah);
+        return "nasabah-show";
+    }
+
+
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, RedirectAttributes attributes){
         nasabahService.delete(id);

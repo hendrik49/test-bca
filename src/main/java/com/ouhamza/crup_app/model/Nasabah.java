@@ -2,10 +2,13 @@ package com.ouhamza.crup_app.model;
 
 import lombok.Data;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -28,5 +31,7 @@ public class Nasabah {
     private float saldo;
     private boolean status;
 
+    @OneToMany(mappedBy="nasabah")
+    private List<Transaksi> transaksi;
 
 }
