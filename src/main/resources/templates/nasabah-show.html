@@ -1,94 +1,147 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      layout:decorate="layout">
-<head>
-
-</head>
-<body>
-
-<section layout:fragment="content">
-
-<div class="container-xl">
-
-    <div class="table-responsive">
-        <div class="table-wrapper">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  layout:decorate="layout"
+>
+  <head> </head>
+  <body>
+    <section layout:fragment="content">
+      <div class="container-xl">
+        <div class="table-responsive">
+          <div class="table-wrapper">
             <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Informasi <b>Nasabah:</b></h2>
-                    </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h2>Informasi <b>Nasabah:</b></h2>
                 </div>
+              </div>
             </div>
 
+            <form
+              action="#"
+              th:action="@{/save}"
+              th:object="${nasabah}"
+              method="post"
+            >
+              <div class="form-group">
+                <input
+                  type="hidden"
+                  th:field="*{id}"
+                  class="form-control"
+                  id="id"
+                  placeholder="Enter name"
+                />
+              </div>
 
-            <form action="#" th:action="@{/save}"  th:object="${nasabah}" method="post" >
-
-
-                <div class="form-group">
-                    <input type="hidden" th:field="*{id}" class="form-control" id="id" placeholder="Enter name" />
-                </div>
-
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" th:field="*{name}" class="form-control" name="name" id="name" placeholder="Enter name" readonly/>
-                    <div class="alert alert-danger mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                </div>
-                  <div class="form-group">
-                    <label for="noRekening">No Rekening</label>
-                    <input type="noRekening" th:field="*{noRekening}" class="form-control" id="noRekening" name="noRekening" placeholder="Enter No rekening" readonly/>
-                      <div class="alert alert-danger mt-1" th:if="${#fields.hasErrors('noRekening')}" th:errors="*{noRekening}"></div>
-                  </div>
-                  <div class="form-group">
-                    <label for="saldo">Saldo</label>
-                    <input type="text" th:field="*{saldo}" class="form-control" id="saldo"  placeholder="Enter Saldo" readonly/>
-                </div>
-                  <div class="form-group">
-                    <label for="phone">Status</label>
-                    <input type="checkbox" th:field="*{status}" class="form-control" id="status" />
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  th:field="*{name}"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  placeholder="Enter name"
+                  readonly
+                />
+                <div
+                  class="alert alert-danger mt-1"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}"
+                ></div>
+              </div>
+              <div class="form-group">
+                <label for="noRekening">No Rekening</label>
+                <input
+                  type="noRekening"
+                  th:field="*{noRekening}"
+                  class="form-control"
+                  id="noRekening"
+                  name="noRekening"
+                  placeholder="Enter No rekening"
+                  readonly
+                />
+                <div
+                  class="alert alert-danger mt-1"
+                  th:if="${#fields.hasErrors('noRekening')}"
+                  th:errors="*{noRekening}"
+                ></div>
+              </div>
+              <div class="form-group">
+                <label for="saldo">Saldo</label>
+                <input
+                  type="text"
+                  th:field="*{saldo}"
+                  class="form-control"
+                  id="saldo"
+                  placeholder="Enter Saldo"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Status</label>
+                <input
+                  type="checkbox"
+                  th:field="*{status}"
+                  class="form-control"
+                  id="status"
+                />
+              </div>
             </form>
-
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>
-                    <span class="custom-checkbox">
-                        <input type="checkbox" id="selectAll">
-                        <label for="selectAll"></label>
-                    </span>
-                    </th>
-                    <th>Nama</th>
-                    <th>No Rekening</th>
-                    <th>Saldo</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="transaksi: ${transaksis}">
-                    <td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-                    </td>
-                    <td th:text="${transaksi.name}"></td>
-                    <td th:text="${transaksi.noRekening}"></td>
-                    <td th:text="${transaksi.saldo}"></td>
-                    <td th:text="${transaksi.status? 'Aktif':'Non Aktif'}"></td>
-                </tr>
-                </tbody>
-            </table>
-
-
+            <div class="row">
+              <div class="table-wrapper">
+                <div class="table-title">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h2>Transkasi <b>Nasabah:</b></h2>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="selectAll" />
+                          <label for="selectAll"></label>
+                        </span>
+                      </th>
+                      <th>Nama</th>
+                      <th>No Rekening</th>
+                      <th>Saldo</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="transaksi: ${transaksis}">
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            type="checkbox"
+                            id="checkbox1"
+                            name="options[]"
+                            value="1"
+                          />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td th:text="${transaksi.name}"></td>
+                      <td th:text="${transaksi.noRekening}"></td>
+                      <td th:text="${transaksi.saldo}"></td>
+                      <td
+                        th:text="${transaksi.status? 'Aktif':'Non Aktif'}"
+                      ></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-</section>
-
-</body>
+      </div>
+    </section>
+  </body>
 </html>
