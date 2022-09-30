@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 09:45 AM
+-- Generation Time: Sep 30, 2022 at 10:36 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -64,9 +64,9 @@ CREATE TABLE `nasabah` (
 
 INSERT INTO `nasabah` (`id`, `name`, `no_rekening`, `saldo`, `status`) VALUES
 (1, 'Hendrik', '62716271672', 2000, b'1'),
-(2, 'Hendra', '21621562516', 5000, b'0'),
+(6, 'mama', '23232323', 50000, b'1'),
 (3, 'Hendrik', '62716271672', 2000, b'1'),
-(4, 'Hendra', '21621562516', 5000, b'0');
+(5, 'hendrik', '22323232', 59999, b'1');
 
 -- --------------------------------------------------------
 
@@ -91,6 +91,15 @@ CREATE TABLE `transaksi` (
   `jenis` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `nominal` float NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `id_nasabah`, `jenis`, `nominal`) VALUES
+(1, 3, 'kredit', 400),
+(2, 6, 'debit', 600),
+(3, 6, 'debit', 600);
 
 -- --------------------------------------------------------
 
@@ -151,7 +160,8 @@ ALTER TABLE `roles`
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKbx4wlrq22h6lytunssn9tjnj7` (`id_nasabah`);
 
 --
 -- Indexes for table `users`
@@ -180,7 +190,7 @@ ALTER TABLE `confirmation_token`
 -- AUTO_INCREMENT for table `nasabah`
 --
 ALTER TABLE `nasabah`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -192,7 +202,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
