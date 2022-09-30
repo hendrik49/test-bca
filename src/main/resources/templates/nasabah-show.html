@@ -109,10 +109,8 @@
                           <label for="selectAll"></label>
                         </span>
                       </th>
-                      <th>Nama</th>
-                      <th>No Rekening</th>
-                      <th>Saldo</th>
-                      <th>Status</th>
+                      <th>Jenis</th>
+                      <th>Nominal</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -128,12 +126,8 @@
                           <label for="checkbox1"></label>
                         </span>
                       </td>
-                      <td th:text="${transaksi.name}"></td>
-                      <td th:text="${transaksi.noRekening}"></td>
-                      <td th:text="${transaksi.saldo}"></td>
-                      <td
-                        th:text="${transaksi.status? 'Aktif':'Non Aktif'}"
-                      ></td>
+                      <td th:text="${transaksi.jenis}"></td>
+                      <td th:text="${transaksi.nominal}"></td>
                     </tr>
                   </tbody>
                 </table>
